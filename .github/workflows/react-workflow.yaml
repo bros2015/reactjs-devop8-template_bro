@@ -15,7 +15,7 @@ jobs:
           echo "TAG=${GITHUB_SHA::8}" >> $GITHUB_ENV
       - name: Show the TAGS values
         run: |
-          echo "TAG value is : ${{ env.TAG }}"
+          echo "TAG value is : ${{ env.TAG }}".
       - name: login to Dockerhub 
         run: | 
           echo "${{ secrets.PASSWORD }}" | docker login -u ${{ secrets.USERNAME }} --password-stdin
