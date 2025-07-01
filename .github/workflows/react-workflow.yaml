@@ -1,0 +1,19 @@
+on:
+  push:
+    branches: [ "non-existing " ]
+
+env:
+  IMAGE_NAME: reactjs-image-gcp
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest 
+    environment: DOCKER_REPOSITORY
+    steps: 
+      - name: Checkout Code 
+        uses: actions/checkout@v3
+      - name: Use with SHA 
+        run: | 
+          echo "TAG=${GITHUB_SHA::8}" >> $GITHUB_ENV
+      - name: Show the TAGS values
+        run: |
+          echo "TAG value is : ${{ env.TAG }}"
